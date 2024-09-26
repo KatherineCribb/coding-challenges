@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TwoSum {
     /* TWO SUM
     Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -17,19 +20,16 @@ public class TwoSum {
     public static int[] getTwoSum(int[] nums, int target) {
         int[] result = new int[2];
 
-        //time: O(n^2) space: O(1)
-        if(nums.length >= 2){
-            int remaining;
-            for (int i = 0; i< nums.length; i++){
-                remaining = target - (nums[i]);
-                for(int j = i+1 ; j<= nums.length-1; j++){
-                    if(nums[j] == remaining){
-                        result[0] = i;
-                        result[1] = j;
-                        return result;
-                    }
-                }
+        //Time: O(n) and space: O(n) for the extra space for hashTable
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                result[0] = map.get(complement);
+                result[1] = i;
+                return result;
             }
+            map.put(nums[i], i);
         }
 
         return result;
