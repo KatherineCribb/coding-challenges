@@ -26,7 +26,7 @@ public class BirthdayCakeCandlesTest {
     @Test
     void birthdayCakeCandles5() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("com/example/birthdayCakeCandles/testCase5").getFile());
+        File file = new File(classLoader.getResource("birthdayCakeCandles/testCase5").getFile());
         Scanner s = new Scanner(file);
         ArrayList<Integer> list = new ArrayList<Integer>();
         while(s.hasNext()){
