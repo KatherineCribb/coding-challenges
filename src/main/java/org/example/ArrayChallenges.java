@@ -15,19 +15,25 @@ public class ArrayChallenges {
     Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
      */
     public static int[] productExceptSelf(int[] nums) {
-         int counter = 1;
-         int[] answer = new int[nums.length];
+        //prefix and suffix approach
+        int n = nums.length;
+        int[] answer = new int[n];
+        int[] prefix = new int[n];
+        int[] suffix = new int[n];
+        prefix[0] = 1;
+        suffix[n-1] = 1;
 
-        for(int i = 0; i< nums.length; i++){
-            for(int j = 0; j<nums.length; j++){
-                if(i!=j){
-                    counter = counter*nums[j];
-                }
-            }
-            answer[i] = counter;
-            counter = 1;
+        for(int i = 1; i<n; i++){
+            prefix[i] = prefix[i-1] * nums[i-1];
         }
 
+        for(int i = n-2; i>-1; i--){
+            suffix[i] = suffix[i+1] * nums[i+1] ;
+        }
+
+        for (int i = 0; i<n; i ++){
+            answer[i] = prefix[i] * suffix[i];
+        }
         return answer;
     }
 }
