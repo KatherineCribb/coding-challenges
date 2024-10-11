@@ -36,4 +36,31 @@ public class ArrayChallenges {
         }
         return answer;
     }
+
+    /* MAXIMUM SUBARRAY
+    Given an integer array nums, find the subarray with the largest sum, and return its sum.
+
+    Constraints:
+
+    1 <= nums.length <= 10^5
+    -10^4 <= nums[i] <= 10^4
+
+    Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+     */
+    //time complexity of O(n^2)
+    public static int maxSubArray(int[] nums) {
+        int maxSum =0;
+        int counter = 0;
+
+        for(int i = 0; i<nums.length; i++){
+            counter = nums[i];
+            for(int j = i+1; j<nums.length; j++){
+                counter = counter + nums[j];
+                if(counter>maxSum){
+                    maxSum = counter;
+                }
+            }
+        }
+        return maxSum != 0? maxSum : counter;
+    }
 }
