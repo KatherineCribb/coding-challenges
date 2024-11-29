@@ -48,7 +48,6 @@ public class ArrayChallengesTest {
     @Test
     void maxSubArrayTestCase1(){
         int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
-        //int[] nums = {3,1,5,2};
 
         assertEquals(6, ArrayChallenges.maxSubArray(nums));
     }
